@@ -25,40 +25,29 @@ body {
 }
 .carrossel::-webkit-scrollbar { display: none; }
 
-/* CADA PÁGINA (IMAGEM CHEIA) */
+/* CADA PÁGINA */
 .slide {
     flex: 0 0 100vw; 
-    
-    /* MUDANÇA 1 também aqui */
     height: 100vh; 
     height: 100dvh; 
-    
     scroll-snap-align: start; 
-    
-    /* MUDANÇA 2: Obriga a travar de 1 em 1 página! */
     scroll-snap-stop: always; 
-    
     position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* COLOCAMOS A COR OFF-WHITE AQUI PARA CAMUFLAR SE SOBRAR TELA */
+    background-color: #000; 
 }
 
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que preencha 100% sem amassar a foto */
-}
-
-/* CADA PÁGINA (IMAGEM CHEIA) */
-.slide {
-    flex: 0 0 100vw; 
-    height: 100vh;
-    scroll-snap-align: start; 
-    position: relative; /* Importante para o botão invisível funcionar */
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Garante que a imagem preencha a tela toda sem esticar feio */
+    
+    /* AQUI ESTÁ A CORREÇÃO DO CORTE: */
+    object-fit: contain; 
+    object-position: center;
 }
 
 /* === A MÁGICA DO BOTÃO INVISÍVEL NA ÚLTIMA PÁGINA === */
