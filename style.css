@@ -14,12 +14,38 @@ body {
     display: flex;
     overflow-x: auto; 
     scroll-snap-type: x mandatory; 
-    height: 100vh; 
+    
+    /* MUDANÇA 1: Usando dvh para corrigir a barra do navegador */
+    height: 100vh; /* Deixamos esse como garantia para computadores velhos */
+    height: 100dvh; /* A mágica dinâmica para o celular! */
     width: 100vw; 
+    
     -ms-overflow-style: none;  
     scrollbar-width: none;  
 }
 .carrossel::-webkit-scrollbar { display: none; }
+
+/* CADA PÁGINA (IMAGEM CHEIA) */
+.slide {
+    flex: 0 0 100vw; 
+    
+    /* MUDANÇA 1 também aqui */
+    height: 100vh; 
+    height: 100dvh; 
+    
+    scroll-snap-align: start; 
+    
+    /* MUDANÇA 2: Obriga a travar de 1 em 1 página! */
+    scroll-snap-stop: always; 
+    
+    position: relative; 
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que preencha 100% sem amassar a foto */
+}
 
 /* CADA PÁGINA (IMAGEM CHEIA) */
 .slide {
