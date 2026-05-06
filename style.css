@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000; 
+    overflow: hidden; 
+}
+
+/* O CARROSSEL (SCROLL SNAP) */
+.carrossel {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    height: 100vh; 
+    width: 100vw; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.carrossel::-webkit-scrollbar { display: none; }
+
+/* CADA PÁGINA (IMAGEM CHEIA) */
+.slide {
+    flex: 0 0 100vw; 
+    height: 100vh;
+    scroll-snap-align: start; 
+    position: relative; /* Importante para o botão invisível funcionar */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha a tela toda sem esticar feio */
+}
+
+/* === A MÁGICA DO BOTÃO INVISÍVEL NA ÚLTIMA PÁGINA === */
+.botao-whatsapp {
+    position: absolute;
+    bottom: 5%; /* Ajuste esse valor para subir ou descer o botão invisível */
+    left: 7%; /* Ajuste para afastar da borda esquerda */
+    width: 20%; /* Largura do botão invisível */
+    height: 15%; /* Altura do botão invisível */
+    
+    /* DICA: Descomente a linha abaixo (tire as barras e asteriscos) para VER o quadrado vermelho e ajeitar o tamanho dele em cima da logo do WhatsApp na foto. Depois comente de novo para ele ficar invisível! */
+    /* background-color: rgba(255, 0, 0, 0.5); */
+}
